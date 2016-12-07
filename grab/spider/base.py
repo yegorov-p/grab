@@ -1034,7 +1034,7 @@ class Spider(DeprecatedThingsSpiderMixin):
                     self.log_network_result_stats(
                         result, from_cache=from_cache)
                     if self.stat.counters.get('spider:request-processed') - self.stat.counters_prev.get(
-                            'spider:request-processed') >= self.rps_limit > 0:
+                            'spider:request-processed',0) >= self.rps_limit > 0:
                         time.sleep(1)
                     if self.is_valid_network_result(result):
                         #print('!! PUT NETWORK RESULT INTO QUEUE (base.py)')
